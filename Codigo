@@ -1,0 +1,257 @@
+#include <AFMotor.h>
+
+AF_DCMotor motor1(1);
+AF_DCMotor motor4(4);
+
+int Adelante = 0;
+int Atras = 0;
+int Izquierda = 0;
+int Derecha = 0;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT); 
+  pinMode(A2, INPUT); 
+  pinMode(A3, INPUT);
+
+  motor1.setSpeed(255);
+  motor4.setSpeed(255);
+
+  stop();
+} 
+void loop () {
+
+
+Adelante = digitalRead(A0);
+Atras = digitalRead(A1);
+Izquierda = digitalRead(A2);
+Derecha = digitalRead(A3);
+
+//Movimientos normales
+
+if (Adelante == 1 && Atras == 0  && Izquierda == 1 && Derecha == 1)
+  { 
+    forward();
+  }
+
+if (Adelante == 0 && Atras == 1  && Izquierda == 1 && Derecha == 1)
+  { 
+    backward();
+  }
+
+if (Adelante == 0 && Atras == 0  && Izquierda == 0 && Derecha == 1)
+  { 
+    left();
+  }
+
+if (Adelante == 0 && Atras == 0  && Izquierda == 1 && Derecha == 0)
+  { 
+    right();
+  }
+
+if (Adelante == 0 && Atras == 0  && Izquierda == 1 && Derecha == 1)
+  { 
+    adder ();
+  }
+
+if (Adelante == 0 && Atras == 1  && Izquierda == 1 && Derecha == 0)
+  { 
+    atder();
+  }
+
+if (Adelante == 1 && Atras == 0  && Izquierda == 0 && Derecha == 1)
+  { 
+    adizq();
+  }
+
+if (Adelante == 0 && Atras == 1  && Izquierda == 0 && Derecha == 1)
+  { 
+    atizq();
+  }
+
+}
+
+void forward ()
+  {
+    motor1.run(FORWARD);
+    motor4.run(FORWARD);
+  }
+
+void backward ()
+  {
+    motor1.run(BACKWARD);
+    motor4.run(BACKWARD);
+  }
+
+void left ()
+  {
+    motor1.run(FORWARD);
+    motor4.run(BACKWARD);
+  }
+
+void right ()
+  {
+    motor1.run(BACKWARD);
+    motor4.run(FORWARD);
+  }
+
+
+void stop ()
+  {
+    motor1.run(RELEASE);
+    motor4.run(RELEASE);
+  }
+
+void adder ()
+  {
+    motor1.run(RELEASE);
+    motor4.run(FORWARD);
+  }
+
+void atder ()
+  {
+    motor1.run(RELEASE);
+    motor4.run(BACKWARD);
+  }
+
+void adizq ()
+  {
+    motor1.run(FORWARD);
+    motor4.run(RELEASE);
+  }
+
+void atizq ()
+  {
+    motor1.run(BACKWARD);
+    motor4.run(RELEASE);
+  }
+
+El vie, 16 may 2025 a la(s) 3:44 p.m., Manuel Villanueva (manuelalejandrovillanueva26@gmail.com) escribió:
+#include <AFMotor.h>
+
+AF_DCMotor motor 1 (1);
+AF_DCMotor motor 4 (4);
+
+int Adelante = 0;
+int Atras = 0;
+int Izquierda = 0;
+int Derecha = 0;
+
+void setup ()
+
+{
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT); 
+  pinMode(A2, INPUT); 
+  pinMode(A3, INPUT);
+
+  motor1.setSpeed (255);
+  motor4.setSpeed (255);
+
+  Stop (): 
+} 
+
+Adelante = digitalRead(A0);
+Atras = digitalRead(A1);
+Izquierda = digitalRead(A2);
+Derecha = digitalRead(A3);
+
+//Movimientos normales
+
+if (Adelante == 1 && Atras == 0  && Izquierda == 1 && Derecha == 1)
+  { 
+    forward();
+  }
+
+  if (Adelante == 0 && Atras == 1  && Izquierda == 1 && Derecha == 1)
+  { 
+    backward();
+  }
+
+  if (Adelante == 0 && Atras == 0  && Izquierda == 0 && Derecha == 1)
+  { 
+    left();
+  }
+
+  if (Adelante == 0 && Atras == 0  && Izquierda == 1 && Derecha == 0)
+  { 
+    right();
+  }
+
+  if (Adelante == 0 && Atras == 0  && Izquierda == 1 && Derecha == 1)
+  { 
+    adder ();
+  }
+
+  if (Adelante == 0 && Atras == 1  && Izquierda == 1 && Derecha == 0)
+  { 
+    atder();
+  }
+
+  if (Adelante == 1 && Atras == 0  && Izquierda == 0 && Derecha == 1)
+  { 
+    adizq();
+  }
+
+  if (Adelante == 0 && Atras == 1  && Izquierda == 0 && Derecha == 1)
+  { 
+    atizq();
+  }
+
+}
+
+void forward ()
+  {
+    motor1.run(FORWARD);
+    motor4.run(FORWARD);
+  }
+
+void backward ()
+  {
+    motor1.run(BACKWARD);
+    motor4.run(BACKWARD);
+  }
+
+void left ()
+  {
+    motor1.run(FORWARD);
+    motor4.run(BACKWARD);
+  }
+
+void right ()
+  {
+    motor1.run(BACKWARD);
+    motor4.run(FORWARD);
+  }
+
+
+void stop ()
+  {
+    motor1.run(RELEASE);
+    motor4.run(RELEASE);
+  }
+
+void adder ()
+  {
+    motor1.run(RELEASE);
+    motor4.run(FORWARD);
+  }
+
+void atder ()
+  {
+    motor1.run(RELEASE);
+    motor4.run(BACKWARD);
+  }
+
+void adizq ()
+  {
+    motor1.run(FORWARD);
+    motor4.run(RELEASE);
+
+void atizq ()
+  {
+    motor1.run(BACKWARD);
+    motor4.run(RELEASE);
+  }
+}
